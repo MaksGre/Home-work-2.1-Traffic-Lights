@@ -9,50 +9,49 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var button: UIButton!
+    
     @IBOutlet weak var redLight: UIView!
     @IBOutlet weak var yellowLight: UIView!
     @IBOutlet weak var greenLight: UIView!
-    @IBOutlet weak var label: UILabel!
     
-    var curLight = 0
+    var currentLight = 0
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         button.layer.cornerRadius = 10
         
-        redLight.layer.cornerRadius = redLight.layer.visibleRect.size.height / 2
-        yellowLight.layer.cornerRadius = yellowLight.layer.visibleRect.size.height / 2
-        greenLight.layer.cornerRadius = greenLight.layer.visibleRect.size.height / 2
+        redLight.layer.cornerRadius = redLight.frame.height / 2
+        yellowLight.layer.cornerRadius = yellowLight.frame.height / 2
+        greenLight.layer.cornerRadius = greenLight.frame.height / 2
         
-        redLight.backgroundColor = UIColor.red
-        yellowLight.backgroundColor = UIColor.yellow
-        greenLight.backgroundColor = UIColor.green
-
-        redLight.alpha = 0.3
-        yellowLight.alpha = 0.3
-        greenLight.alpha = 0.3
+        redLight.backgroundColor = .red
+        yellowLight.backgroundColor = .yellow
+        greenLight.backgroundColor = .green
     }
 
     @IBAction func buttonTap(_ sender: UIButton) {
         
+        let lowAlpha: CGFloat = 0.3
+        let highAlpha: CGFloat = 1
+        
         button.setTitle("NEXT", for: .normal)
         
-        curLight = curLight == 3 ? 1 : curLight + 1
+        currentLight = currentLight == 3 ? 1 : currentLight + 1
 
-        redLight.alpha = 0.3
-        yellowLight.alpha = 0.3
-        greenLight.alpha = 0.3
+        redLight.alpha = lowAlpha
+        yellowLight.alpha = lowAlpha
+        greenLight.alpha = lowAlpha
 
-        switch curLight {
+        switch currentLight {
         case 1:
-            redLight.alpha = 1
+            redLight.alpha = highAlpha
         case 2:
-            yellowLight.alpha = 1
+            yellowLight.alpha = highAlpha
         case 3:
-            greenLight.alpha = 1
+            greenLight.alpha = highAlpha
         default:
             break
         }
