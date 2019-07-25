@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var yellowLight: UIView!
     @IBOutlet weak var greenLight: UIView!
     
+    let lowAlpha: CGFloat = 0.3
+    let highAlpha: CGFloat = 1
+
     var currentLight = 0
     
     override func viewDidLoad() {
@@ -33,9 +36,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTap(_ sender: UIButton) {
-        
-        let lowAlpha: CGFloat = 0.3
-        let highAlpha: CGFloat = 1
         
         button.setTitle("NEXT", for: .normal)
         
